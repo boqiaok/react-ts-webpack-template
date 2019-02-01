@@ -1,0 +1,11 @@
+@import "./normalize.css";
+@import '~bourbon/core/_bourbon.scss';
+@import "./common.scss";
+
+body {
+  color: #000;
+}
+
+.name {
+  color: #999;
+}
