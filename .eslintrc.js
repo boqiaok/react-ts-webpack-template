@@ -1,3 +1,7 @@
+const jsExtensions = ['.js', '.jsx'];
+const tsExtensions = ['.ts', '.tsx'];
+const allExtensions = jsExtensions.concat(tsExtensions);
+
 module.exports = {
   env: {
     browser: true,
@@ -8,29 +12,27 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:@typescript-eslint/recommended',
-    "plugin:import/typescript",
+    // "plugin:import/typescript",
     'prettier/@typescript-eslint',  // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
     'plugin:prettier/recommended',  
     "prettier/react",
   ],
-  plugins: ['@typescript-eslint', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'import'],
   "parserOptions": {
-      ecmaVersion:  2018,  // Allows for the parsing of modern ECMAScript features
       "sourceType": "module",
       ecmaFeatures: {
         impliedStrict: true,
       },
-      // "project": "./tsconfig.json",
-      // "tsconfigRootDir": "."
+      "tsconfigRootDir": __dirname,
+      "project": "./tsconfig.json",
   },
   rules: {
-    // 'prettier/prettier': 'warn',
+    'prettier/prettier': 'warn',
     // indent: ['error', 'tab'],
     // 'linebreak-style': ['error', 'unix'],
     // quotes: ['error', 'single'],
     // semi: ['error', 'never'],
     // 'react/prop-types': 0,
-    // 'react/prefer-stateless-function': [0],
     // "no-unused-vars": [0],
     // 'import/no-mutable-exports': [0], // 动态更新权限
     // 'import/prefer-default-export': 0,
@@ -58,24 +60,18 @@ module.exports = {
     //     "paths": ["src"]
     //   }
     // },
-    // "@typescript-eslint/explicit-function-return-type": [
-    //   "error",
-    //   {
-    //     "allowCurrying": true
-    //   }
-    // ],
     // "@typescript-eslint/indent": [2, 2],
-    // 'no-useless-escape': [0],
-    // 'import/no-unresolved': [0],
-    // 'react/forbid-prop-types': [0],
-    // 'react/no-array-index-key': [0],
-    // '@typescript-eslint/explicit-function-return-type': [0],
-    // '@typescript-eslint/no-unused-vars': [0],
-    // "react/prefer-stateless-function": [0],
-    // "@typescript-eslint/explicit-member-accessibility": [0],
-    // "import/no-extraneous-dependencies": [0],
-    // '@typescript-eslint/no-useless-constructor': [0],
-    // "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "ts", "tsx"] }]
+    'no-useless-escape': [0],
+    'import/no-unresolved': [0],
+    'react/forbid-prop-types': [0],
+    'react/no-array-index-key': [0],
+    '@typescript-eslint/explicit-function-return-type': [0],
+    '@typescript-eslint/no-unused-vars': [0],
+    "react/prefer-stateless-function": [0],
+    "@typescript-eslint/explicit-member-accessibility": [0],
+    "import/no-extraneous-dependencies": [0],
+    '@typescript-eslint/no-useless-constructor': [0],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "ts", "tsx"] }]
   },
   globals: {
     document: false,
@@ -83,11 +79,20 @@ module.exports = {
     require: false,
   },
   settings: {
-    'import/resolver': {
-      node: {
-        paths: ['src'],
-        extensions: ['.ts', '.tsx'],
-      },
+    // 'import/resolver': {
+    //   node: {
+    //     paths: ['src'],
+    //     extensions: ['.ts', '.tsx'],
+    //   },
+    // },
+    'import/extensions': allExtensions,
+    'import/parsers': {
+      '@typescript-eslint/parser': tsExtensions
     },
+    'import/resolver': {
+      'node': {
+        'extensions': allExtensions
+      }
+    }
   },
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 // import Loadable from 'react-loadable'
 
