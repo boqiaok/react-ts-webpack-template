@@ -1,17 +1,15 @@
-import * as React from 'react'
+import React from 'react'
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 // import Loadable from 'react-loadable'
 
 // import Loading from '@/views/Loading'
-
-@withRouter
+// @withRouter
 class Loading extends React.Component {
   render() {
     return (
       <>
-        <div>sss</div>
+        <div>sss1</div>
       </>
-      
     )
   }
 }
